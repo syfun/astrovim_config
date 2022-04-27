@@ -2,6 +2,7 @@ local config = {
 
   -- Set colorscheme
   colorscheme = "default_theme",
+  -- colorscheme = "catppuccin",
 
   -- Default theme configuration
   default_theme = {
@@ -53,6 +54,13 @@ local config = {
       --   event = "BufRead",
       --   config = function()
       --     require("lsp_signature").setup()
+      --   end,
+      -- },
+      -- {
+      --   "catppuccin/nvim",
+      --   as = "catppuccin",
+      --   config = function()
+      --     require("catppuccin").setup {}
       --   end,
       -- },
       { "github/copilot.vim" },
@@ -179,6 +187,14 @@ local config = {
 
     -- Set key bindings
     map("n", "<C-s>", ":w!<CR>")
+    map("i", "<C-l>", "<Right>")
+    map("i", "<C-h>", "<Left>")
+    map("i", "<C-a>", "<ESC>^i")
+    map("i", "<C-e>", "<End>")
+    map("i", "<C-j>", "<Up>")
+    map("i", "<C-k>", "<Down>")
+
+
 
     -- Set autocommands
     vim.api.nvim_create_augroup("packer_conf", {})
@@ -188,6 +204,11 @@ local config = {
       pattern = "plugins.lua",
       command = "source <afile> | PackerSync",
     })
+
+    -- Github Copilot
+    vim.g.copilot_no_tab_map = true
+    vim.g.copilot_assume_mapped = true
+    vim.api.nvim_set_keymap("i", "<C-l>", 'copilot#Accept("")', { expr = true, silent = true })
 
     -- Set up custom filetypes
     -- vim.filetype.add {
