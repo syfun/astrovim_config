@@ -191,8 +191,8 @@ local config = {
     map("i", "<C-h>", "<Left>")
     map("i", "<C-a>", "<ESC>^i")
     map("i", "<C-e>", "<End>")
-    map("i", "<C-j>", "<Up>")
-    map("i", "<C-k>", "<Down>")
+    map("i", "<C-k>", "<Up>")
+    map("i", "<C-j>", "<Down>")
 
 
 
