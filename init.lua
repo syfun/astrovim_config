@@ -94,6 +94,29 @@ local config = {
       --   end,
       -- },
       { "ellisonleao/gruvbox.nvim" },
+      { 
+        "tzachar/cmp-tabnine", 
+        after = "nvim-cmp",
+        run = "./install.sh",
+        config = function()
+          require("cmp_tabnine.config").setup(
+            {
+              max_lines = 1000,
+              max_num_results = 20,
+              sort = true,
+              run_on_every_keystroke = true,
+              snippet_placeholder = "..",
+              ignored_file_types = {
+                -- default is not to ignore
+                -- uncomment to ignore in lua:
+                -- lua = true
+              },
+              show_prediction_strength = false,
+            }
+          )
+          astronvim.add_user_cmp_source "cmp_tabnine"
+        end,
+      },
     },
     -- All other entries override the setup() call for default plugins
     ["null-ls"] = function(config)
@@ -110,16 +133,16 @@ local config = {
         null_ls.builtins.diagnostics.flake8,
       }
       -- set up null-ls's on_attach function
-      config.on_attach = function(client)
-        -- NOTE: You can remove this on attach function to disable format on save
-        if client.resolved_capabilities.document_formatting then
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            desc = "Auto format before save",
-            pattern = "<buffer>",
-            callback = vim.lsp.buf.formatting_sync,
-          })
-        end
-      end
+      -- config.on_attach = function(client)
+      --   -- NOTE: You can remove this on attach function to disable format on save
+      --   if client.resolved_capabilities.document_formatting then
+      --     vim.api.nvim_create_autocmd("BufWritePre", {
+      --       desc = "Auto format before save",
+      --       pattern = "<buffer>",
+      --       callback = vim.lsp.buf.formatting_sync,
+      --     })
+      --   end
+      -- end
       return config -- return final config table
     end,
     treesitter = {
@@ -156,6 +179,7 @@ local config = {
   -- true == 1000
   cmp = {
     source_priority = {
+      cmp_tabnine = 1200,
       nvim_lsp = 1000,
       luasnip = 750,
       buffer = 500,
@@ -280,6 +304,8 @@ local config = {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
+
+    
   end,
 }
 
