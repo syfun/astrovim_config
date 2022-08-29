@@ -18,7 +18,7 @@ local config = {
   },
 
   -- Set colorscheme
-  colorscheme = "gruvbox",
+  colorscheme = "default_theme",
 
   -- Override highlight groups in any theme
   highlights = {
@@ -93,30 +93,30 @@ local config = {
       --     require("lsp_signature").setup()
       --   end,
       -- },
-      { "ellisonleao/gruvbox.nvim" },
-      { 
-        "tzachar/cmp-tabnine", 
-        after = "nvim-cmp",
-        run = "./install.sh",
-        config = function()
-          require("cmp_tabnine.config").setup(
-            {
-              max_lines = 1000,
-              max_num_results = 20,
-              sort = true,
-              run_on_every_keystroke = true,
-              snippet_placeholder = "..",
-              ignored_file_types = {
-                -- default is not to ignore
-                -- uncomment to ignore in lua:
-                -- lua = true
-              },
-              show_prediction_strength = false,
-            }
-          )
-          astronvim.add_user_cmp_source "cmp_tabnine"
-        end,
-      },
+      -- { "ellisonleao/gruvbox.nvim" },
+      -- { 
+      --   "tzachar/cmp-tabnine", 
+      --   after = "nvim-cmp",
+      --   run = "./install.sh",
+      --   config = function()
+      --     require("cmp_tabnine.config").setup(
+      --       {
+      --         max_lines = 1000,
+      --         max_num_results = 5,
+      --         sort = true,
+      --         run_on_every_keystroke = true,
+      --         snippet_placeholder = "..",
+      --         ignored_file_types = {
+      --           -- default is not to ignore
+      --           -- uncomment to ignore in lua:
+      --           -- lua = true
+      --         },
+      --         show_prediction_strength = false,
+      --       }
+      --     )
+      --     astronvim.add_user_cmp_source "cmp_tabnine"
+      --   end,
+      -- },
     },
     -- All other entries override the setup() call for default plugins
     ["null-ls"] = function(config)
@@ -179,7 +179,7 @@ local config = {
   -- true == 1000
   cmp = {
     source_priority = {
-      cmp_tabnine = 1200,
+      -- cmp_tabnine = 1200,
       nvim_lsp = 1000,
       luasnip = 750,
       buffer = 500,
