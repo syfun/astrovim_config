@@ -19,7 +19,8 @@ local config = {
 	},
 
 	-- Set colorscheme
-	colorscheme = "astrodark",
+	-- colorscheme = "astrodark",
+  colorscheme = "catppuccin",
 
   -- Diagnostics configuration (for vim.diagnostics.config({}))
 	diagnostics = {
